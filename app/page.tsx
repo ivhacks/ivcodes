@@ -8,7 +8,7 @@ export default function Home() {
         <Frame 
           width={800} 
           height={700} 
-          imageSrc="/images/classroom.jpg" 
+          imageSrc="/images/bwsi.jpg" 
           alt="classroom" 
           title="MIT BWSI Embedded Security & Hardware Hacking" 
           titleColor="white" 
