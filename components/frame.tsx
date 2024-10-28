@@ -1,10 +1,12 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface DiagonalCornerImageProps {
   width?: number
   height?: number
-  imageSrc: string
-  alt: string
+  images: { src: string; alt: string }[]
   title?: string
   titleColor?: string
 }
@@ -12,12 +14,20 @@ interface DiagonalCornerImageProps {
 export default function DiagonalCornerImage({ 
   width = 300, 
   height = 200, 
-  imageSrc, 
-  alt,
+  images,
   title,
   titleColor = 'white'
 }: DiagonalCornerImageProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const cutSize = 70 // Size of the diagonal cut
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
+  }
 
   return (
     <div
@@ -26,6 +36,7 @@ export default function DiagonalCornerImage({
         height: `${height}px`,
         position: 'relative',
         overflow: 'hidden',
+        margin: '1vw'
       }}
     >
       <svg
@@ -61,8 +72,8 @@ export default function DiagonalCornerImage({
         }}
       >
         <img
-          src={imageSrc}
-          alt={alt}
+          src={images[currentImageIndex].src}
+          alt={images[currentImageIndex].alt}
           style={{
             width: '100%',
             height: '100%',
@@ -89,6 +100,24 @@ export default function DiagonalCornerImage({
         >
           {title}
         </div>
+      )}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            aria-label="Previous image"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={nextImage}
+            aria-label="Next image"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </>
       )}
     </div>
   )
