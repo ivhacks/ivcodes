@@ -12,7 +12,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="container mx-1 px-1 py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full py-8">
       <h1 className="font-bold text-center mb-8">In progress... :^)</h1>
       <div className="flex">
         <Frame 
