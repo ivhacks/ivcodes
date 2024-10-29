@@ -19,17 +19,18 @@ export default function Home() {
   return (
     <>
       <div className="intro-section flex flex-wrap items-center">
-        <div className="p-20">
+        <div className="pl-20 pt-40 md:pt-0">
           <p className="intro">Hi! I'm</p>
           <h1 className="leading-none">Iv Robinson.</h1>
           <p className="intro">Iv rhymes with "give."</p>
         </div>
-        <div className="w-[90vw] md:w-[40vw]">
-          <div className="flex justify-center">
-            <PortraitFrame image='/images/iv.png' alt='picture of me' />
+        <div className="flex-1 h-3/6 flex items-center">
+          <div className="flex-1 pb-40 md:pb-0">
+            <div className="flex justify-center">
+              <PortraitFrame image='/images/iv.png' alt='picture of me' />
+            </div>
           </div>
         </div>
-
       </div>
       <div className="flex flex-wrap justify-center">
         <Frame

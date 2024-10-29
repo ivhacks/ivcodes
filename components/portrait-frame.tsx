@@ -12,7 +12,7 @@ export default function PortraitFrame({
 
   return (
       <div 
-        className="relative overflow-hidden portrait-bg w-[60vw] md:w-[20vw]"
+        className="relative overflow-hidden portrait-bg w-[50vw] md:w-[20vw]"
       >
         <Image
             src={image}
