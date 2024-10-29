@@ -14,7 +14,7 @@ export default function Home() {
   ]
 
   const mqp_images = [
-    { src: "images/mqp/walls.jpg", alt: "1" }
+    { src: "images/mqp/walls.jpg", alt: "My advisor, Prof. Robert Walls. and I. As the capstone project for my Bachelor's degree, I worked with MTIRE to do research on how effectively neural networks can overcome existing protections against power-based sidechannel attacks on embedded systems. That is a lot of words. I could write it in fewer if it weren't 2AM. By monitoring how much power an embedded system draws while doing computations, we can get a \"power trace\". These power traces can then be analyzed and used to determine exactly what data the device was processing. Problematic if, for example, the device was encrypting something with a secret key. Software protections exist that make this strategy nearly impossible, but incur a large performance hit. My research found that using a more recent attack strategy involving training a neural network to recognize the right patterns, these protections effectiveness is greatly reduced." }
   ]
   return (
     <>
