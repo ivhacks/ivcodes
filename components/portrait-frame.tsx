@@ -3,25 +3,22 @@ import Image from 'next/image'
 interface PortraitFrameProps {
   image: string;
   alt: string;
-  size: number;
 }
 
 export default function PortraitFrame({ 
   image, 
   alt, 
-  size
 }: PortraitFrameProps) {
 
   return (
       <div 
-        className="relative overflow-hidden portrait-bg"
-        style={{ width: size, height: size }}
+        className="relative overflow-hidden portrait-bg w-[60vw] md:w-[20vw]"
       >
         <Image
             src={image}
             alt={alt}
-            width={size}
-            height={size}
+            width={1634}
+            height={1634}
             className="object-cover"
           />
       </div>

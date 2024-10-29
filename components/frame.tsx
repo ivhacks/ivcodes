@@ -12,8 +12,6 @@ interface DiagonalCornerImageProps {
 }
 
 export default function DiagonalCornerImage({ 
-  width = 300, 
-  height = 200, 
   images,
   title,
   titleColor = 'white'
@@ -30,10 +28,9 @@ export default function DiagonalCornerImage({
   }
 
   return (
-    <div
+    <div className="w-[90vw] md:w-[40vw]"
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
+        height: `50vh`,
         position: 'relative',
         overflow: 'hidden',
         margin: '1vw'
@@ -69,8 +66,9 @@ export default function DiagonalCornerImage({
             marginRight: '10%',
             textAlign: 'center',
             color: titleColor,
-            fontSize: '2rem',
+            fontSize: '1.5rem',
             fontWeight: 'bold',
+            background: "#00000080",
             zIndex: 10,
           }}
         >

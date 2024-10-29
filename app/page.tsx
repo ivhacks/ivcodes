@@ -18,44 +18,36 @@ export default function Home() {
   ]
   return (
     <>
-      <div className="intro-section flex items-center">
+      <div className="intro-section flex flex-wrap items-center">
         <div className="p-20">
           <p className="intro">Hi! I'm</p>
           <h1 className="leading-none">Iv Robinson.</h1>
           <p className="intro">Iv rhymes with "give."</p>
         </div>
-        <div className="flex justify-end">
-          <PortraitFrame image='/images/iv.png' alt='picture of me' size={400} />
+        <div className="w-[90vw] md:w-[40vw]">
+          <div className="flex justify-center">
+            <PortraitFrame image='/images/iv.png' alt='picture of me' />
+          </div>
         </div>
 
       </div>
-      <div className="flex justify-center">
+      <div className="flex flex-wrap justify-center">
         <Frame
-          width={800}
-          height={700}
           images={bwsi_images}
           title="MIT BWSI Embedded Security & Hardware Hacking"
           titleColor="white"
         />
         <Frame
-          width={800}
-          height={700}
           images={ectf_images}
           title="MITRE Embedded CTF"
           titleColor="white"
         />
-      </div>
-      <div className="flex justify-center">
         <Frame
-          width={800}
-          height={700}
           images={ectf_images}
           title="Cyber Security Club"
           titleColor="white"
         />
         <Frame
-          width={800}
-          height={700}
           images={mqp_images}
           title="Major Qualifying Project (undergrad capstone)"
           titleColor="white"
