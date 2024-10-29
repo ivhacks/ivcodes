@@ -1,4 +1,5 @@
 import Frame from '@/components/frame'
+import PortraitFrame from '@/components/portrait-frame'
 
 export default function Home() {
   const bwsi_images = [
@@ -8,28 +9,58 @@ export default function Home() {
   ]
 
   const ectf_images = [
-    { src: "images/ectf/awards.jpg", alt: "1" },
+    { src: "images/ectf/1.jpg", alt: "1" },
+    { src: "images/ectf/awards.jpg", alt: "2" },
   ]
 
+  const mqp_images = [
+    { src: "images/mqp/walls.jpg", alt: "1" }
+  ]
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full py-8">
-      <h1 className="font-bold text-center mb-8">In progress... :^)</h1>
-      <div className="flex">
-        <Frame 
-          width={800} 
-          height={700} 
+    <>
+      <div className="intro-section flex items-center">
+        <div className="p-20">
+          <p className="intro">Hi! I'm</p>
+          <h1 className="leading-none">Iv Robinson.</h1>
+          <p className="intro">Iv rhymes with "give."</p>
+        </div>
+        <div className="flex justify-end">
+          <PortraitFrame image='/images/iv.png' alt='picture of me' size={400} />
+        </div>
+
+      </div>
+      <div className="flex justify-center">
+        <Frame
+          width={800}
+          height={700}
           images={bwsi_images}
-          title="MIT BWSI Embedded Security & Hardware Hacking" 
-          titleColor="white" 
+          title="MIT BWSI Embedded Security & Hardware Hacking"
+          titleColor="white"
         />
-        <Frame 
-          width={800} 
-          height={400} 
+        <Frame
+          width={800}
+          height={700}
           images={ectf_images}
-          title="MITRE Embedded CTF" 
-          titleColor="white" 
+          title="MITRE Embedded CTF"
+          titleColor="white"
         />
       </div>
-    </div>
+      <div className="flex justify-center">
+        <Frame
+          width={800}
+          height={700}
+          images={ectf_images}
+          title="Cyber Security Club"
+          titleColor="white"
+        />
+        <Frame
+          width={800}
+          height={700}
+          images={mqp_images}
+          title="Major Qualifying Project (undergrad capstone)"
+          titleColor="white"
+        />
+      </div>
+    </>
   )
 }

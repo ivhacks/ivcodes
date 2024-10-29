@@ -14,15 +14,23 @@
   }
 }
 
+@font-face {
+  font-family: 'Aleo';
+  src: url('../fonts/Aleo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   margin: 0;
   padding: 0;
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, orange, red);
+  /* background: linear-gradient(to bottom right, orange, red); */
+  background: #202020;
+  background-attachment: fixed;
 }
 
 .container {
@@ -33,6 +41,23 @@ body {
 
 h1 {
   font-size: 8vw;
-  color: black;
+  font-family: Aleo;
+  color: transparent;
   margin: 0;
+  background: linear-gradient(to bottom right, red, orange);
+	background-clip: text;
+}
+
+.portrait-bg {
+  size: 50vw;
+  background: linear-gradient(to bottom right, red, orange);
+}
+
+.intro{
+  font-family: Aleo;
+  color: white;
+}
+
+.intro-section{
+  height: 100vh;
 }
