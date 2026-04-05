@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import { getAllPosts, getPost } from '@/lib/blog'
 import ReactMarkdown from 'react-markdown'
 import FitTitle from '@/components/fit-title'
@@ -6,6 +7,12 @@ import CodeBlock from '@/components/code-block'
 
 export function generateStaticParams() {
   return getAllPosts().map(post => ({ slug: post.slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = getPost(slug)
+  return { title: post?.title ?? 'Blog' }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
