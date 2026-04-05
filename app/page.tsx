@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="h-screen flex">
-      <div className="w-1/2 flex items-center border-r border-neutral-700">
+      <div className="w-1/2 flex items-center ">
         <div className="px-12">
           <p className="intro text-2xl">Hi! I'm</p>
           <h1 className="leading-none" style={{ fontSize: '8vw' }}>Iv Robinson</h1>
