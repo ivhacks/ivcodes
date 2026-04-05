@@ -1,60 +1,28 @@
-import Frame from '@/components/frame'
-import PortraitFrame from '@/components/portrait-frame'
+import Link from 'next/link'
+import { getAllPosts } from '@/lib/blog'
 
 export default function Home() {
-  const bwsi_images = [
-    { src: "images/bwsi/bwsi.jpg", alt: "For the last two years, I have been the lead instructor of MIT's BWSI Embedded Security and Hardware Hacking course. This is a month-long summer program for high schoolers that covers C and Python programming, cryptography, and software and hardware exploitation basics. The main focus is the design challenge, where teams of four build secure firmware update systems. Teams who finish enter the attack phase, where they try to hack other teams' designs. The course is very intense, for the students, instructors, and TAs. I hope silly details like running 110 feet of LED gamer lightstrips around the classroom made it even more fun and memorable. " },
-    { src: "images/bwsi/staff.png", alt: "BWSI encourages hiring former students as TAs. All but one of the teaching staff pictured here were my students in 2023 or 2022 (when I was an intern working on the course). Most of them flew in and lived in Airbnbs during July. It was inspiring and humbling to see how passionate they were about the course. Some of them consistently hit their 50-hour per week allowance making new teaching materials and interactive coding labs." },
-    { src: "images/bwsi/3.jpg", alt: "This is a system one of the students designed to attack a rival team's design. They're exploiting a buffer overread vulnerability that can be strategically called thousands of times to dump the entire firmware." }
-  ]
+  const posts = getAllPosts()
 
-  const ectf_images = [
-    { src: "images/ectf/1.jpg", alt: "MITRE's Embedded Capture the Flag (eCTF) is an attack/defense style competition spanning about 3 months. Teams of college students attempt to design a secure embedded system, then they try to exploit vulnerabilities in other school's designs. eCTF is the basis for the BWSI Embedded Security design challenge. Pictured: an automation harness I and a teammate created for our 2023 eCTF design: a secure car/key fob pairing system." },
-    { src: "images/ectf/awards.jpg", alt: "On behalf of the WPI team, I presented our design and attack strategies at the 2023 eCTF awards ceremony." },
-  ]
-
-  const mqp_images = [
-    { src: "images/mqp/walls.jpg", alt: "My advisor, Prof. Robert Walls. and I. As the capstone project for my Bachelor's degree, I worked with MTIRE to do research on how effectively neural networks can overcome existing protections against power-based sidechannel attacks on embedded systems. That is a lot of words. I could write it in fewer if it weren't 2AM. By monitoring how much power an embedded system draws while doing computations, we can get a \"power trace\". These power traces can then be analyzed and used to determine exactly what data the device was processing. Problematic if, for example, the device was encrypting something with a secret key. Software protections exist that make this strategy nearly impossible, but incur a large performance hit. My research found that using a more recent attack strategy involving training a neural network to recognize the right patterns, these protections effectiveness is greatly reduced." }
-  ]
   return (
-    <>
-      <div className='intro-section '>
-        <div className="sub-intro-section flex flex-wrap items-center">
-          <div className="pl-20 pt-40 md:pt-0">
-            <p className="intro">Hi! I'm</p>
-            <h1 className="leading-none">Iv Robinson.</h1>
-            <p className="intro">Iv rhymes with "give."</p>
-          </div>
-          <div className="flex-1 h-3/6 flex items-center">
-            <div className="flex-1 pb-40 md:pb-0">
-              <div className="flex justify-center">
-                <PortraitFrame image='/images/iv.png' alt='picture of me' />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='w-full flex justify-center p-0 m-0 h-min'>
-          <p className="intro">Scroll to check out some of my projects!</p>
+    <div className="h-screen flex">
+      <div className="w-1/2 flex items-center border-r border-neutral-700">
+        <div className="px-12">
+          <p className="intro text-2xl">Hi! I'm</p>
+          <h1 className="leading-none" style={{ fontSize: '8vw' }}>Iv Robinson</h1>
+          <p className="intro text-2xl">Iv rhymes with "give."</p>
         </div>
       </div>
-
-      <div className="flex flex-wrap justify-center">
-        <Frame
-          images={bwsi_images}
-          title="MIT BWSI Embedded Security & Hardware Hacking"
-          titleColor="white"
-        />
-        <Frame
-          images={ectf_images}
-          title="MITRE Embedded CTF"
-          titleColor="white"
-        />
-        <Frame
-          images={mqp_images}
-          title="Major Qualifying Project (undergrad capstone)"
-          titleColor="white"
-        />
+      <div className="w-1/2 h-screen overflow-y-auto flex items-center">
+        <nav className="flex flex-col gap-6 pl-20">
+          {posts.map(post => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline px-6 py-3 -mx-6 w-96 hover:bg-black">
+              <p className="font-[Aleo] text-white text-lg m-0 leading-tight">{post.title}</p>
+              <p className="font-[Aleo] text-neutral-500 text-sm m-0">{post.created}</p>
+            </Link>
+          ))}
+        </nav>
       </div>
-    </>
+    </div>
   )
 }

@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "lucide-react": "^0.454.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "gray-matter": "^4.0.3",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",

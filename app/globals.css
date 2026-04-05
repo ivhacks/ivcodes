@@ -33,12 +33,6 @@ body {
   background-attachment: fixed;
 }
 
-.container {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-}
-
 h1 {
   font-size: 8vw;
   font-family: Aleo;
@@ -48,20 +42,8 @@ h1 {
 	background-clip: text;
 }
 
-.portrait-bg {
-  size: 50vw;
-  background: linear-gradient(to bottom right, red, orange);
-}
-
 .intro{
   font-family: Aleo;
   color: white;
 }
 
-.intro-section{
-  height: 100vh;
-}
-
-.sub-intro-section{
-  height: 95vh;
-}
