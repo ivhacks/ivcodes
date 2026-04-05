@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Arial', 'sans-serif'],
+        serif: ['Georgia', 'serif'],
+        mono: ['"Andale Mono"', 'monospace'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

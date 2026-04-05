@@ -14,13 +14,6 @@
   }
 }
 
-@font-face {
-  font-family: 'Aleo';
-  src: url('../fonts/Aleo-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   color: var(--foreground);
   margin: 0;
@@ -35,7 +28,7 @@ body {
 
 h1 {
   font-size: 8vw;
-  font-family: Aleo;
+  font-family: Georgia, serif;
   color: transparent;
   margin: 0;
   background: linear-gradient(to bottom right, red, orange);
@@ -43,7 +36,7 @@ h1 {
 }
 
 .intro{
-  font-family: Aleo;
+  font-family: Georgia, serif;
   color: white;
 }
 

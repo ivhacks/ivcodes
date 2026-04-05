@@ -22,6 +22,9 @@ export default function FitTitle({ children }: { children: string }) {
         size -= 0.25
         el.style.fontSize = `${size}rem`
       }
+      // One extra step down for breathing room
+      size -= 0.25
+      el.style.fontSize = `${size}rem`
     }
 
     fit()
@@ -30,7 +33,7 @@ export default function FitTitle({ children }: { children: string }) {
   }, [children])
 
   return (
-    <h1 ref={ref} className="m-0 leading-tight text-[1.5em] md:whitespace-nowrap md:leading-none">
+    <h1 ref={ref} className="m-0 leading-tight text-[1.5em] md:whitespace-nowrap md:leading-[1.2] md:pb-1">
       {children}
     </h1>
   )
