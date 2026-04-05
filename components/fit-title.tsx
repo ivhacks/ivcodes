@@ -10,8 +10,13 @@ export default function FitTitle({ children }: { children: string }) {
     if (!el) return
 
     const fit = () => {
+      // Only fit on desktop — on mobile the CSS handles it with a fixed size
+      if (!window.matchMedia('(min-width: 768px)').matches) {
+        el.style.fontSize = ''
+        return
+      }
       const container = el.parentElement!
-      let size = 6 // rem start — roughly 5-6 lines of body text height
+      let size = 6
       el.style.fontSize = `${size}rem`
       while (el.scrollWidth > container.clientWidth && size > 1) {
         size -= 0.25
@@ -25,7 +30,7 @@ export default function FitTitle({ children }: { children: string }) {
   }, [children])
 
   return (
-    <h1 ref={ref} className="m-0 whitespace-nowrap leading-none" style={{ fontSize: '12rem' }}>
+    <h1 ref={ref} className="m-0 leading-tight text-[1.5em] md:whitespace-nowrap md:leading-none">
       {children}
     </h1>
   )
