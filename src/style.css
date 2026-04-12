@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: Arial, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: "Andale Mono", monospace;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #202020;
+  color: #ededed;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  color: transparent;
+  margin: 0;
+  background: linear-gradient(to bottom right, red, orange);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.intro {
+  font-family: Georgia, serif;
+  color: white;
+}
+
+article.prose pre {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  border-radius: 0;
+  position: relative;
+  overflow-x: auto;
+}
+
+article.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #737373;
+  font-family: 'Andale Mono', monospace;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.copy-btn:hover {
+  color: white;
+}
