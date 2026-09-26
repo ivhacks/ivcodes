@@ -162,7 +162,7 @@ hr {
 	width:100%;
 	background-color:transparent !important;
 height:149px;
-		background-image: url(../../../wp-content/uploads/2022/09/laser.png);
+		background-image: url(../../uploads/2022/09/laser.png);
 	background-repeat: repeat-x;
 		background-position: 0 62px;
 }
@@ -272,7 +272,7 @@ color:#ffffff !important;
 		    border-top: 1px solid #fff;
 	color:#620000 !important;
 font-weight:500;
-			background-image: url(../../../wp-content/uploads/2022/05/content-back.png);
+			background-image: url(../../uploads/2022/05/content-back.png);
 	background-repeat: repeat;
 	text-decoration:none !important;
 }
@@ -321,7 +321,7 @@ p:empty {
     width:1170px !important;
 	margin:0 auto !important;
 	background-color:transparent !important;
-		background-image: url(../../../wp-content/uploads/2022/05/content-back.png);
+		background-image: url(../../uploads/2022/05/content-back.png);
 	background-repeat: repeat;
 }
 .home .content-area {
@@ -336,7 +336,7 @@ p:empty {
 }
 .home .full_width {
     padding: 30px 35px 12px 38px !important;
-			background-image: url(../../../wp-content/uploads/2022/05/content-back.png);
+			background-image: url(../../uploads/2022/05/content-back.png);
 	background-repeat: repeat;
 
 }
