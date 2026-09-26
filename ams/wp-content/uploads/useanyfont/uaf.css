@@ -1,0 +1,10 @@
+				@font-face {
+					font-family: 'gotham-narrow-italic';
+					src: url('../../../wp-content/uploads/useanyfont/1574Gotham-Narrow-Italic.woff2') format('woff2'),
+						url('../../../wp-content/uploads/useanyfont/1574Gotham-Narrow-Italic.woff') format('woff');
+					font-weight: 400; font-style: italic; font-display: auto;
+				}
+
+				.gotham-narrow-italic{font-family: 'gotham-narrow-italic' !important;}
+
+		
