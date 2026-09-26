@@ -1,4 +1,4 @@
-import { mkdirSync, rmSync, readdirSync, readFileSync, writeFileSync, watch } from 'node:fs'
+import { cpSync, mkdirSync, rmSync, readdirSync, readFileSync, writeFileSync, watch } from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
@@ -48,6 +48,7 @@ type Post = { slug: string; title: string; date: string; html: string }
 function build() {
   rmSync(distDir, { recursive: true, force: true })
   mkdirSync(distDir, { recursive: true })
+  cpSync(path.join(root, 'ams'), path.join(distDir, 'ams'), { recursive: true })
 
   // Load every markdown file in blog/ and render it to HTML.
   const posts: Post[] = []
