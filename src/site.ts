@@ -1,4 +1,4 @@
-import { mkdirSync, rmSync, readdirSync, readFileSync, writeFileSync, watch } from 'node:fs'
+import { cpSync, mkdirSync, rmSync, readdirSync, readFileSync, writeFileSync, watch } from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
@@ -125,6 +125,46 @@ ${p.html}
   const tailwindCss = readFileSync(path.join(distDir, 'tailwind.css'), 'utf-8')
   writeFileSync(path.join(distDir, 'style.css'), hljsCss + '\n' + tailwindCss)
   rmSync(path.join(distDir, 'tailwind.css'))
+
+  // Finished print files. Copy them byte for byte.
+  cpSync(path.join(root, 'public'), distDir, { recursive: true })
+
+  const jousboxxBody = `<div class="min-h-screen px-6 py-10 md:py-16">
+  <div class="max-w-xl mx-auto">
+    <a href="/" class="font-serif text-neutral-500 no-underline hover:text-white">iv codes</a>
+    <h1 class="leading-none text-5xl md:text-7xl mt-8">Jousboxx</h1>
+    <p class="intro text-lg md:text-2xl mt-3">QR print sheets</p>
+    <p class="font-sans text-neutral-300 mt-6 mb-0">X, SoundCloud, Instagram, and Discord.</p>
+    <a href="/jousboxx/jousboxx-qr-all-four-17x11.pdf" download="jousboxx-qr-all-four-17x11.pdf" class="block no-underline font-sans bg-orange-500 hover:bg-orange-400 text-black text-center px-6 py-5 mt-8">
+      <span class="block text-xl">Download combined sheet</span>
+      <span class="block text-sm mt-1">All four · 17 × 11 in · landscape</span>
+    </a>
+    <p class="font-sans text-neutral-400 text-sm mt-3 mb-0">Scales cleanly to Letter and larger. Print landscape.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-10">
+      <a href="/jousboxx/jousboxx-qr-x-letter-landscape.pdf" download="jousboxx-qr-x-letter-landscape.pdf" class="block no-underline font-sans border border-neutral-600 hover:bg-black px-5 py-4">
+        <span class="block text-white text-lg">Download X</span>
+        <span class="block text-neutral-400 text-sm mt-1">Letter · 11 × 8.5 in · landscape</span>
+      </a>
+      <a href="/jousboxx/jousboxx-qr-soundcloud-letter-landscape.pdf" download="jousboxx-qr-soundcloud-letter-landscape.pdf" class="block no-underline font-sans border border-neutral-600 hover:bg-black px-5 py-4">
+        <span class="block text-white text-lg">Download SoundCloud</span>
+        <span class="block text-neutral-400 text-sm mt-1">Letter · 11 × 8.5 in · landscape</span>
+      </a>
+      <a href="/jousboxx/jousboxx-qr-instagram-letter-landscape.pdf" download="jousboxx-qr-instagram-letter-landscape.pdf" class="block no-underline font-sans border border-neutral-600 hover:bg-black px-5 py-4">
+        <span class="block text-white text-lg">Download Instagram</span>
+        <span class="block text-neutral-400 text-sm mt-1">Letter · 11 × 8.5 in · landscape</span>
+      </a>
+      <a href="/jousboxx/jousboxx-qr-discord-letter-landscape.pdf" download="jousboxx-qr-discord-letter-landscape.pdf" class="block no-underline font-sans border border-neutral-600 hover:bg-black px-5 py-4">
+        <span class="block text-white text-lg">Download Discord</span>
+        <span class="block text-neutral-400 text-sm mt-1">Letter · 11 × 8.5 in · landscape</span>
+      </a>
+    </div>
+    <a href="/jousboxx/jousboxx-qr-printouts.zip" download="jousboxx-qr-printouts.zip" class="block no-underline font-sans border border-neutral-600 hover:bg-black text-center px-5 py-4 mt-8">
+      <span class="block text-white text-lg">Download all (zip)</span>
+      <span class="block text-neutral-400 text-sm mt-1">Combined sheet and the four singles</span>
+    </a>
+  </div>
+</div>`
+  writeFileSync(path.join(distDir, 'jousboxx', 'index.html'), htmlPage('Jousboxx QR print sheets', jousboxxBody))
 }
 
 build()
@@ -132,6 +172,7 @@ build()
 if (process.argv[2] === 'dev') {
   watch(path.join(root, 'src'), { recursive: true }, build)
   watch(blogDir, { recursive: true }, build)
+  watch(path.join(root, 'public'), { recursive: true }, build)
 
   Bun.serve({
     port: 3000,
