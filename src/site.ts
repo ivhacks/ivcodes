@@ -80,18 +80,21 @@ function build() {
       </a>`
   }
 
-  const homeBody = `<div class="h-screen flex flex-col md:flex-row">
-  <div class="pt-12 pb-6 md:py-0 md:w-1/2 flex items-center">
-    <div class="px-8 md:px-12 pr-12 md:pr-16">
-      <p class="intro text-lg md:text-2xl">Hi! I'm</p>
-      <h1 class="leading-none text-5xl md:text-[7vw]">Iv Robinson</h1>
-      <p class="intro text-lg md:text-2xl">Iv rhymes with &quot;give.&quot;</p>
+  const homeBody = `<div class="h-screen flex flex-col">
+  <div class="flex-1 min-h-0 flex flex-col md:flex-row">
+    <div class="pt-12 pb-6 md:py-0 md:w-1/2 flex items-center">
+      <div class="px-8 md:px-12 pr-12 md:pr-16">
+        <p class="intro text-lg md:text-2xl">Hi! I'm</p>
+        <h1 class="leading-none text-5xl md:text-[7vw]">Iv Robinson</h1>
+        <p class="intro text-lg md:text-2xl">Iv rhymes with &quot;give.&quot;</p>
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto md:w-1/2 md:flex md:items-center">
+      <nav class="flex flex-col gap-4 md:gap-6 px-8 md:pl-20 pb-8 md:pb-0">${links}
+      </nav>
     </div>
   </div>
-  <div class="flex-1 overflow-y-auto md:w-1/2 md:flex md:items-center">
-    <nav class="flex flex-col gap-4 md:gap-6 px-8 md:pl-20 pb-8 md:pb-0">${links}
-    </nav>
-  </div>
+  <a href="/albums/" class="shrink-0 font-serif text-neutral-500 text-sm no-underline hover:text-white px-8 md:px-12 pt-2 pb-5">sick albums that i love</a>
 </div>`
   writeFileSync(path.join(distDir, 'index.html'), htmlPage('iv codes', homeBody))
 
@@ -111,6 +114,28 @@ ${p.html}
 </div>`
     writeFileSync(path.join(dir, 'index.html'), htmlPage(p.title, body))
   }
+
+  // Spotify album ids. Add one to put another player on /albums.
+  const albums = [
+    '52abbUrmRs1bmdVp01U9e2', // Beauty in Death, Chase Atlantic
+    '2Fin9olY1bjzCciF2KccCr', // Hardcore Diva, ISOxo
+  ]
+  let albumPlayers = ''
+  for (const id of albums) {
+    albumPlayers += `
+    <iframe class="block" style="border-radius: 12px" width="100%" height="352" title="Spotify album" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" src="https://open.spotify.com/embed/album/${escape(id)}?utm_source=oembed"></iframe>`
+  }
+  const albumsBody = `<div class="min-h-screen px-6 py-10 md:py-16">
+  <div class="max-w-xl mx-auto">
+    <a href="/" class="font-serif text-neutral-500 no-underline hover:text-white">iv codes</a>
+    <h1 class="leading-none text-5xl md:text-7xl mt-8">albums</h1>
+    <div class="flex flex-col gap-8 mt-10">
+${albumPlayers}
+    </div>
+  </div>
+</div>`
+  mkdirSync(path.join(distDir, 'albums'), { recursive: true })
+  writeFileSync(path.join(distDir, 'albums', 'index.html'), htmlPage('albums', albumsBody))
 
   // Copy the browser JS over untouched.
   writeFileSync(path.join(distDir, 'client.js'), readFileSync(path.join(root, 'src', 'client.js'), 'utf-8'))
